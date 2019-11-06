@@ -1,0 +1,154 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Theme.master.cs" Inherits="ThuVien.Theme" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="js/boxOver.js"></script>
+    <style>
+        .css-search {
+            border-radius: 2px;
+            padding: 8px 15px;
+            box-shadow: none !important;
+            display: block;
+            width: 529px;
+            height: 41px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="main_container_full">
+            <div class="top_bar">
+                <div class="main_container">
+                    <div class="LoginBox" id="NotActive" runat="server">
+                        <div class="box_text">
+                            <asp:HyperLink ID="HyperLink6" runat="server" Font-Underline="False" ForeColor="#7E592A" NavigateUrl="~/Dang-Nhap">Đăng nhập  </asp:HyperLink>
+                            | 
+                            <asp:HyperLink ID="HyperLink7" runat="server" Font-Underline="False" ForeColor="#7E592A" NavigateUrl="~/Dang-Ky">Đăng ký</asp:HyperLink>
+                        </div>
+                    </div>
+                    <div class="LoginBox" id="Active" runat="server">
+                        <div class="box_text">
+                            <div id="top-navigation">
+                                Xin Chào
+                                <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Tai-Khoan">
+                                    <asp:Label ID="lblHoTen" runat="server" Text="Người dùng"></asp:Label>
+                                </asp:HyperLink>
+                                <span>|</span>
+                                <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/exit">Đăng xuất</asp:HyperLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="header">
+                <div class="logo">
+                    <asp:Image ID="Image2" runat="server" ImageUrl="~/images/logo.jpg" />
+                </div>
+                <div class="search" style="display: inline-block; text-align: center;">
+                    <div style="float: left;">
+                        <asp:TextBox ID="txtTuKhoa" runat="server" CssClass="css-search" TextMode="Search"></asp:TextBox>
+                    </div>
+                    <div style="float: right;">
+                        <asp:ImageButton ID="btnSearch" runat="server" ImageUrl="~/libs/images/imgSearch.png" OnClick="btnSearch_Click" />
+                    </div>   
+                </div>
+                <div class="menu">
+                    <asp:HyperLink ID="HyperLink12" runat="server" Font-Underline="False" CssClass="btnGreen">Hướng dẫn sử dụng</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink11" runat="server" Font-Underline="False" CssClass="btnOrange" NavigateUrl="~/Upload">Tải lên</asp:HyperLink>
+                </div>
+            </div>
+            <!-- Start of Menu tab-->
+            <div id="menu_tab">
+                <div class="main_container">
+                    <ul class="menu">
+                        <li class="active">
+                            <asp:HyperLink ID="HyperLink1" runat="server" CssClass="nav1" NavigateUrl="/" ForeColor="#7E592A">Trang chủ</asp:HyperLink></li>
+                        <li class="divider"></li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink2" runat="server" CssClass="nav2" NavigateUrl="~/Tai-Lieu" ForeColor="#7E592A">Tài liệu</asp:HyperLink></li>
+                        <li class="divider"></li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink3" runat="server" CssClass="nav3" NavigateUrl="~/Sach" ForeColor="#7E592A" Width="61px">Sách</asp:HyperLink></li>
+                        <li class="divider"></li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink4" runat="server" CssClass="nav4" NavigateUrl="~/Tin-Tuc" ForeColor="#7E592A">Tin tức</asp:HyperLink></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end of menu tab -->
+            <!-- Start of Main-->
+            <div class="main_container">
+                <div class="crumb_navigation">
+                    Thư viên: <span class="current">
+                        <asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder>
+                    </span>
+                </div>
+                <div class="center_content">
+                    <asp:ContentPlaceHolder ID="Main" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <div class="right_content">
+                    <div class="title_box">Danh mục tài liệu</div>
+                    <ul class="left_menu">
+                        <asp:DataList ID="dataChuyenNganh" runat="server">
+                            <ItemTemplate>
+                                <li class="odd">
+                                    <asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl='<%# "~/Tai-Lieu/DM/"+Eval("TenChuanHoa")+"-"+Eval("IdChuyenNganh") %>'><%# Eval("TenChuyenNganh") %></asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                        </asp:DataList>
+                    </ul>
+                    <div class="title_box">Danh mục sách</div>
+                    <ul class="left_menu">
+                        <asp:DataList ID="dataTheLoai" runat="server">
+                            <ItemTemplate>
+                                <li class="odd">
+                                    <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# "~/Sach/TL/"+Eval("TenChuanHoa")+"-"+Eval("IdTheLoaiSach") %>' Text='<%# Eval("TenTheLoai") %>'></asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                        </asp:DataList>
+                    </ul>
+                    <div class="title_box">Bài viết mới nhất</div>
+                    <div class="content-news">
+                        <asp:DataList ID="dataBaiViet" runat="server">
+                            <ItemTemplate>
+                                    <li><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# "~/Tin-Tuc/"+Eval("TenChuanHoa")+"-"+Eval("IdBaiViet") %>' Text='<%# Eval("TenBaiViet") %>'></asp:HyperLink></li>
+                            </ItemTemplate>
+                        </asp:DataList>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Main-->
+            <!-- Start of Footer-->
+            <div class="footer">
+                <div class="main_container">
+                    <div class="left_footer">
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/images/qnu-logo.png" Height="65px" Width="65px" />
+                    </div>
+                    <div class="center_footer">
+                        Thư viện. All Rights Reserved 2018<br />
+                        <br />
+                    </div>
+                    <div class="right_footer"><a href="#">Trang chủ</a> <a href="#">Giới thiệu</a> <a href="contact.html">Kết nối</a> </div>
+                </div>
+            </div>
+            <!-- End of Main-->
+        </div>
+    </form>
+</body>
+</html>

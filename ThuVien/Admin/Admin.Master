@@ -1,0 +1,80 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="ThuVien.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <style type="text/css">
+        .auto-style1 {
+            height: 29px;
+        }
+        .auto-style2 {
+            text-align: center;
+            height: 29px;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <div class="shell">
+                <!-- Logo + Top Nav -->
+                <div id="top">
+                    <h1>
+                        <asp:HyperLink ID="HyperLink1" runat="server">Management Web</asp:HyperLink></h1>
+                    <div id="top-navigation">
+                        Xin Chào 
+                        <strong>
+                            <asp:Label ID="lblUserName" runat="server" ForeColor="red"></asp:Label>
+                        </strong>
+                        <span>|</span>
+                        <asp:HyperLink ID="HyperLink8" runat="server" Font-Underline="False" NavigateUrl="~/Exit.aspx">Đăng xuất</asp:HyperLink>
+                    </div>
+                </div>
+                <!-- End Logo + Top Nav -->
+                <!-- Main Nav -->
+                <div id="navigation">
+                    <ul>
+                        <li>
+                            <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Admin/index.aspx"><span>Bảng điều kiển</span></asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Admin/QLSach.aspx"><span>Quản lý Sách</span></asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Admin/QLTaiLieu.aspx"><span>Quản lý Tài Liệu</span></asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Admin/QLNguoiDung.aspx"><span>Quản lý Người Dùng</span></asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Admin/QLBaiViet.aspx"><span>Quản lý Bài Viết</span></asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Main Nav -->
+            </div>
+        </div>
+        <!-- Container -->
+        <div id="container">
+            <!-- Content -->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            <!-- End Content -->
+            <!--Menu phụ -->
+            <div class="cl">&nbsp;</div>
+        </div>
+        <!-- End Container -->
+        <!-- Footer -->
+        <div class="clearfixed"></div>
+        <div id="footer">
+            <div class="shell"><span class="left">&copy; 2018 - TeamDev CBL</span> <span class="right">Design by TeamDev CBL </span></div>
+        </div>
+        <!-- End Footer -->
+    </form>
+</body>
+</html>
